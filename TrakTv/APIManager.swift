@@ -13,11 +13,13 @@ class APIManager: NSObject {
 
     static var sharedInstance = APIManager()
     
+    /// Requests to the trakt api
     enum tracktRequestype {
         case people
         case trendingMovies
     }
     
+    /// Requests to the movie db api
     enum movieDBRequesttype {
         case movies
         case people

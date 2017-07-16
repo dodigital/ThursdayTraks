@@ -23,7 +23,6 @@ class Movie: NSObject {
     var posterData : Data?
     var tagline : String?
     var trailerId : String?
-    
     var youtubeTrailerThumbnail : URL?
     
     init(movieID : Int?, title : String?, rating : Float?, movieSummary : String?, genreArray : [String]?, releaseYear : Int?, certRating : String?, slugId : String?, tagLine : String?, trailerId : String?) {
@@ -42,6 +41,7 @@ class Movie: NSObject {
         self.youtubeTrailerThumbnail = URL(string: String.init(format: "http://i1.ytimg.com/vi/%@/mqdefault.jpg", trailerId!))!
     }
     
+    //
     func updateImagePath(path : String){
         
         self.imagePath = URL(string: String.init(format: "https://image.tmdb.org/t/p/w500%@", path))

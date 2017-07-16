@@ -40,9 +40,17 @@ class TrendingMoviesTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        UINavigationBar.appearance().barTintColor = UIColor(red:0.16, green:0.17, blue:0.20, alpha:0.4)
+        UINavigationBar.appearance().setBackgroundImage(UIImage(named: "Rectangle")!.resizableImage(withCapInsets: UIEdgeInsetsMake(0, 0, 0, 0)), for: .default)
     }
     
+    /**
+     This starts the chain of api calls to both the movie db api and trakt api
+        Sequence:
+            [1] Get all the movies
+            [2] Loop through all movies and grab the post url
+            [3] Loop through and get all the cast and crew members
+            [4] Loop though all people for each movie and get there profile photos if available
+     */
     func startMoviesRequest(pageIndex : Int){
         
         self.isDataLoading = true
@@ -50,15 +58,16 @@ class TrendingMoviesTableViewController: UITableViewController {
         if (Reachability.sharedInstance?.isReachable)! {
             
             DispatchQueue.global().async {
-                
+                //[1]
                 APIManager.sharedInstance.startTrendingRequests(pageIndex: pageIndex) { (complete) in
                     
                     let personRequestGroup = DispatchGroup()
                     
+                    // Ensuring where are at the desired range due to pagination
                     for item in self.movies[(pageIndex-1) * 10...self.movies.count-1] {
                         
                         personRequestGroup.enter()
-                        
+                        //[3]
                         APIManager.sharedInstance.performTrackTRequests(requestType: APIManager.tracktRequestype.people, movie: item, pageIndex: 1, completion: { (didComplete, people) in
                             
                             item.udpateCast(people: people as! [Person])
@@ -69,11 +78,13 @@ class TrendingMoviesTableViewController: UITableViewController {
                     personRequestGroup.notify(queue: DispatchQueue.global(), execute: {
                         
                         let memberImageGroup = DispatchGroup()
+                        
+                         // Ensuring where are at the desired range due to pagination
                         for movie in self.movies[(pageIndex-1) * 10...self.movies.count-1] {
                             
                             for member in movie.people! {
                                 memberImageGroup.enter()
-                                
+                                //[4]
                                 APIManager.sharedInstance.performMovieDBRequest(requestType: APIManager.movieDBRequesttype.people, id: member.movieId!, completion: { (didCompleteRequest, path) in
                                     
                                     member.getProfilePath(path: path)
@@ -94,10 +105,13 @@ class TrendingMoviesTableViewController: UITableViewController {
         }
     }
     
+    /**
+     Where connectivity was previously lost and now resumed, this handles the recall to the trackt api
+     */
     func confirmConnectivity(sender : NSNotification){
         
         if self.movies.count == 0 {
-            startMoviesRequest(pageIndex: 0)
+            startMoviesRequest(pageIndex: self.pageIndex)
         }
         
     }
