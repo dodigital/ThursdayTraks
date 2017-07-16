@@ -8,112 +8,50 @@
 
 import UIKit
 
-class MovieTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource {
+let ImageHeight: CGFloat = 200.0
+let OffsetSpeed: CGFloat = 25.0
 
-    @IBOutlet weak var subContentView: UIView!
-    @IBOutlet weak var movieThumbnail: UIImageView!
-    @IBOutlet weak var movieTitle: UILabel!
-    @IBOutlet weak var movieRatingLabel: UILabel!
-    @IBOutlet weak var releaseYearLabel: UILabel!
-    @IBOutlet weak var certRating: UILabel!
-    @IBOutlet weak var movieSummary: UILabel!
-    @IBOutlet weak var movieCollectionView: UICollectionView!
+class MovieTableViewCell: UITableViewCell {
     
+    @IBOutlet weak var moviewThumbnail: UIImageView!
+    @IBOutlet weak var movieTitleLabel: UILabel!
     @IBOutlet weak var genreLabel: UILabel!
+    @IBOutlet weak var certRatingLabel: UILabel!
     
-    var movie : Movie?
+    // Once we have the movie object, update the UI
+    var movie : Movie! {
+        didSet {
+            self.setupUI()
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.subContentView.layer.cornerRadius = 20
-        
-        self.movieCollectionView.delegate = self
-        self.movieCollectionView.dataSource = self
-        
-        self.movieCollectionView.register(UINib(nibName: "CastCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "castCell")
-        
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
+    private func setupUI(){
     
-    func setupCell(movie : Movie){
-    
-        guard (movie.title != nil) else {
-           return self.movieTitle.text = "N/L"
-        }
-        
-        guard (movie.movieSummary != nil) else {
-            return self.movieTitle.text = "N/L"
-        }
-        guard (movie.certRating != nil) else {
-            return self.movieTitle.text = "N/L"
-        }
-        
-        guard (movie.rating != nil) else {
-           return self.movieTitle.text = "N/L"
-        }
-        guard (movie.imagePath != nil) else {
-            return
-        }
-        guard (movie.genreArray != nil ) else {
+        guard movie.imagePath != nil else {
             return
         }
         
-        self.movieTitle.text = movie.title!
-        self.movieSummary.text = movie.movieSummary!
-        self.certRating.text  = movie.certRating!
-        self.movieRatingLabel.text = "\(round(Double(movie.rating!)))"
-        
-        var genreString = ""
-        for genre in movie.genreArray! {
-            
-        }
-        
-        self.genreLabel.text = genreString
-        
-        self.movieThumbnail.downloadedFrom(url: movie.imagePath! as URL)
-        
-        self.movie = movie
+        self.moviewThumbnail.downloadedFrom(url: movie.imagePath! as URL, contentMode: UIViewContentMode.scaleAspectFill)
+        self.movieTitleLabel.text = movie.title
+        self.genreLabel.text = movie.configureGenreString()
+        self.certRatingLabel.text = movie.certRating
     }
-    
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        guard self.movie != nil else {
-            return 0
-       }
-        return self.movie!.genreArray!.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "castCell", for: indexPath) as! CastCollectionViewCell
-        
-        if self.movie!.genreArray!.count > 0 {
-          //  cell.titleLabel.text = self.movie?.genreArray![indexPath.row]
-            
-        }
-        
-        return cell
-        
-    }
-    
 
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout:UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        let labelString = self.movie?.genreArray![indexPath.row]
-        let stringHeight =  labelString?.height(withConstrainedWidth: 100, font: UIFont(name: "HelveticaNeue-Light", size: 15)!)
-        let stringWidth = labelString?.width(withConstraintedHeight: 100, font: UIFont(name: "HelveticaNeue-Light", size: 15)!)
-        return CGSize(width: stringWidth!, height: stringHeight!)
+    // TODO
+    func configureStarRatingView(){
+    
     }
+    
+    // Called in the parent view controller to set the parallax effect
+    func offset(_ offset: CGPoint)
+    {
+        moviewThumbnail.frame = self.moviewThumbnail.bounds.offsetBy(dx: offset.x, dy: offset.y)
+    }
+    
     
 }

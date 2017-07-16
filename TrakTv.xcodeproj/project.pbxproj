@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		6220F5671F17F9EB000DF209 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6220F5661F17F9EB000DF209 /* AppDelegate.swift */; };
-		6220F5691F17F9EB000DF209 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6220F5681F17F9EB000DF209 /* ViewController.swift */; };
 		6220F56C1F17F9EB000DF209 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6220F56A1F17F9EB000DF209 /* Main.storyboard */; };
 		6220F56E1F17F9EB000DF209 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6220F56D1F17F9EB000DF209 /* Assets.xcassets */; };
 		6220F5711F17F9EB000DF209 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6220F56F1F17F9EB000DF209 /* LaunchScreen.storyboard */; };
@@ -16,10 +15,20 @@
 		6220F59F1F181A8E000DF209 /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6220F59E1F181A8E000DF209 /* MovieTableViewCell.swift */; };
 		6220F5A11F181C36000DF209 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6220F5A01F181C36000DF209 /* Movie.swift */; };
 		6220F5A31F184406000DF209 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6220F5A21F184406000DF209 /* Extensions.swift */; };
-		6220F5A61F184D1D000DF209 /* CastCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6220F5A41F184D1D000DF209 /* CastCollectionViewCell.swift */; };
-		6220F5A71F184D1D000DF209 /* CastCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6220F5A51F184D1D000DF209 /* CastCollectionViewCell.xib */; };
 		622CADED1F18AC5500E6C941 /* TrakTvTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622CADEC1F18AC5500E6C941 /* TrakTvTests.swift */; };
 		622CADF51F18EA5700E6C941 /* MovieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622CADF41F18EA5700E6C941 /* MovieTests.swift */; };
+		622CADF71F18EEA200E6C941 /* CastMember.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622CADF61F18EEA200E6C941 /* CastMember.swift */; };
+		622CADF91F1A7CC600E6C941 /* madmax.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 622CADF81F1A7CC600E6C941 /* madmax.jpg */; };
+		622CADFB1F1A80CE00E6C941 /* TrendingMoviesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622CADFA1F1A80CE00E6C941 /* TrendingMoviesTableViewController.swift */; };
+		622CAE011F1AB2BF00E6C941 /* CrewMember.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622CAE001F1AB2BF00E6C941 /* CrewMember.swift */; };
+		622CAE031F1ABA1E00E6C941 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622CAE021F1ABA1E00E6C941 /* Person.swift */; };
+		622CAE051F1B558D00E6C941 /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622CAE041F1B558D00E6C941 /* MovieDetailViewController.swift */; };
+		622CAE071F1B732B00E6C941 /* TrailerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622CAE061F1B732B00E6C941 /* TrailerTableViewCell.swift */; };
+		622CAE091F1B94F100E6C941 /* ProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622CAE081F1B94F100E6C941 /* ProfileCollectionViewCell.swift */; };
+		622CAE0B1F1B95C600E6C941 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622CAE0A1F1B95C600E6C941 /* ProfileViewController.swift */; };
+		622CAE0D1F1BAF7D00E6C941 /* RoundedCornersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622CAE0C1F1BAF7D00E6C941 /* RoundedCornersView.swift */; };
+		622CAE111F1BD9E700E6C941 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622CAE101F1BD9E700E6C941 /* Reachability.swift */; };
+		622CAE131F1BDEFF00E6C941 /* customNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622CAE121F1BDEFF00E6C941 /* customNavigationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,7 +44,6 @@
 /* Begin PBXFileReference section */
 		6220F5631F17F9EB000DF209 /* TrakTv.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrakTv.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6220F5661F17F9EB000DF209 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		6220F5681F17F9EB000DF209 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		6220F56B1F17F9EB000DF209 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6220F56D1F17F9EB000DF209 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6220F5701F17F9EB000DF209 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -44,12 +52,22 @@
 		6220F59E1F181A8E000DF209 /* MovieTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = "<group>"; };
 		6220F5A01F181C36000DF209 /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		6220F5A21F184406000DF209 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		6220F5A41F184D1D000DF209 /* CastCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CastCollectionViewCell.swift; sourceTree = "<group>"; };
-		6220F5A51F184D1D000DF209 /* CastCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CastCollectionViewCell.xib; sourceTree = "<group>"; };
 		622CADEA1F18AC5500E6C941 /* TrakTvTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrakTvTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		622CADEC1F18AC5500E6C941 /* TrakTvTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrakTvTests.swift; sourceTree = "<group>"; };
 		622CADEE1F18AC5500E6C941 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		622CADF41F18EA5700E6C941 /* MovieTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieTests.swift; sourceTree = "<group>"; };
+		622CADF61F18EEA200E6C941 /* CastMember.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CastMember.swift; sourceTree = "<group>"; };
+		622CADF81F1A7CC600E6C941 /* madmax.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = madmax.jpg; sourceTree = "<group>"; };
+		622CADFA1F1A80CE00E6C941 /* TrendingMoviesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrendingMoviesTableViewController.swift; sourceTree = "<group>"; };
+		622CAE001F1AB2BF00E6C941 /* CrewMember.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CrewMember.swift; sourceTree = "<group>"; };
+		622CAE021F1ABA1E00E6C941 /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		622CAE041F1B558D00E6C941 /* MovieDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
+		622CAE061F1B732B00E6C941 /* TrailerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrailerTableViewCell.swift; sourceTree = "<group>"; };
+		622CAE081F1B94F100E6C941 /* ProfileCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileCollectionViewCell.swift; sourceTree = "<group>"; };
+		622CAE0A1F1B95C600E6C941 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		622CAE0C1F1BAF7D00E6C941 /* RoundedCornersView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedCornersView.swift; sourceTree = "<group>"; };
+		622CAE101F1BD9E700E6C941 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		622CAE121F1BDEFF00E6C941 /* customNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = customNavigationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,18 +109,19 @@
 		6220F5651F17F9EB000DF209 /* TrakTv */ = {
 			isa = PBXGroup;
 			children = (
+				622CADFE1F1A81EF00E6C941 /* Resources */,
+				622CADFD1F1A81D400E6C941 /* Objects */,
+				622CADFC1F1A81C600E6C941 /* Cells */,
 				6220F5661F17F9EB000DF209 /* AppDelegate.swift */,
-				6220F5681F17F9EB000DF209 /* ViewController.swift */,
+				622CADFA1F1A80CE00E6C941 /* TrendingMoviesTableViewController.swift */,
+				622CAE121F1BDEFF00E6C941 /* customNavigationViewController.swift */,
+				622CAE041F1B558D00E6C941 /* MovieDetailViewController.swift */,
+				622CAE0A1F1B95C600E6C941 /* ProfileViewController.swift */,
+				622CADFF1F1A864A00E6C941 /* Helpers */,
 				6220F56A1F17F9EB000DF209 /* Main.storyboard */,
-				6220F56D1F17F9EB000DF209 /* Assets.xcassets */,
 				6220F56F1F17F9EB000DF209 /* LaunchScreen.storyboard */,
 				6220F5721F17F9EB000DF209 /* Info.plist */,
-				6220F5781F17FA07000DF209 /* APIManager.swift */,
-				6220F5A21F184406000DF209 /* Extensions.swift */,
-				6220F5A41F184D1D000DF209 /* CastCollectionViewCell.swift */,
-				6220F5A51F184D1D000DF209 /* CastCollectionViewCell.xib */,
-				6220F59E1F181A8E000DF209 /* MovieTableViewCell.swift */,
-				6220F5A01F181C36000DF209 /* Movie.swift */,
+				6220F56D1F17F9EB000DF209 /* Assets.xcassets */,
 			);
 			path = TrakTv;
 			sourceTree = "<group>";
@@ -115,6 +134,46 @@
 				622CADEE1F18AC5500E6C941 /* Info.plist */,
 			);
 			path = TrakTvTests;
+			sourceTree = "<group>";
+		};
+		622CADFC1F1A81C600E6C941 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				6220F59E1F181A8E000DF209 /* MovieTableViewCell.swift */,
+				622CAE061F1B732B00E6C941 /* TrailerTableViewCell.swift */,
+				622CAE081F1B94F100E6C941 /* ProfileCollectionViewCell.swift */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		622CADFD1F1A81D400E6C941 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				6220F5A01F181C36000DF209 /* Movie.swift */,
+				622CADF61F18EEA200E6C941 /* CastMember.swift */,
+				622CAE001F1AB2BF00E6C941 /* CrewMember.swift */,
+				622CAE021F1ABA1E00E6C941 /* Person.swift */,
+			);
+			name = Objects;
+			sourceTree = "<group>";
+		};
+		622CADFE1F1A81EF00E6C941 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				622CAE101F1BD9E700E6C941 /* Reachability.swift */,
+				622CADF81F1A7CC600E6C941 /* madmax.jpg */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		622CADFF1F1A864A00E6C941 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				6220F5781F17FA07000DF209 /* APIManager.swift */,
+				6220F5A21F184406000DF209 /* Extensions.swift */,
+				622CAE0C1F1BAF7D00E6C941 /* RoundedCornersView.swift */,
+			);
+			name = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -202,7 +261,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6220F5711F17F9EB000DF209 /* LaunchScreen.storyboard in Resources */,
-				6220F5A71F184D1D000DF209 /* CastCollectionViewCell.xib in Resources */,
+				622CADF91F1A7CC600E6C941 /* madmax.jpg in Resources */,
 				6220F56E1F17F9EB000DF209 /* Assets.xcassets in Resources */,
 				6220F56C1F17F9EB000DF209 /* Main.storyboard in Resources */,
 			);
@@ -223,11 +282,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				6220F5791F17FA07000DF209 /* APIManager.swift in Sources */,
-				6220F5A61F184D1D000DF209 /* CastCollectionViewCell.swift in Sources */,
 				6220F5A31F184406000DF209 /* Extensions.swift in Sources */,
-				6220F5691F17F9EB000DF209 /* ViewController.swift in Sources */,
+				622CAE131F1BDEFF00E6C941 /* customNavigationViewController.swift in Sources */,
+				622CAE031F1ABA1E00E6C941 /* Person.swift in Sources */,
+				622CAE0B1F1B95C600E6C941 /* ProfileViewController.swift in Sources */,
+				622CAE011F1AB2BF00E6C941 /* CrewMember.swift in Sources */,
 				6220F59F1F181A8E000DF209 /* MovieTableViewCell.swift in Sources */,
 				6220F5671F17F9EB000DF209 /* AppDelegate.swift in Sources */,
+				622CAE0D1F1BAF7D00E6C941 /* RoundedCornersView.swift in Sources */,
+				622CAE071F1B732B00E6C941 /* TrailerTableViewCell.swift in Sources */,
+				622CAE091F1B94F100E6C941 /* ProfileCollectionViewCell.swift in Sources */,
+				622CADFB1F1A80CE00E6C941 /* TrendingMoviesTableViewController.swift in Sources */,
+				622CADF71F18EEA200E6C941 /* CastMember.swift in Sources */,
+				622CAE051F1B558D00E6C941 /* MovieDetailViewController.swift in Sources */,
+				622CAE111F1BD9E700E6C941 /* Reachability.swift in Sources */,
 				6220F5A11F181C36000DF209 /* Movie.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -371,6 +439,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 65DRA3A89J;
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
 				INFOPLIST_FILE = TrakTv/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.demo.Traktv.TrakTv;
@@ -384,6 +453,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 65DRA3A89J;
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
 				INFOPLIST_FILE = TrakTv/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.demo.Traktv.TrakTv;

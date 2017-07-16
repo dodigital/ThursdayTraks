@@ -40,6 +40,20 @@ extension URL {
         let URLString : String = String(format: "%@?%@", self.absoluteString, parametersDictionary.queryParameters)
         return URL(string: URLString)!
     }
+    
+    func getImageData(completion : @escaping (_ data : Data) -> Void){
+        
+        URLSession.shared.dataTask(with: self) { (data, response, error) in
+            guard let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
+                let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
+                let imageData = data, error == nil
+                else { return }
+            
+                completion(imageData)
+            
+            }.resume()
+
+    }
 }
 
 
