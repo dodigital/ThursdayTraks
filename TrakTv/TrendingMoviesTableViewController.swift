@@ -37,6 +37,12 @@ class TrendingMoviesTableViewController: UITableViewController {
 
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        UINavigationBar.appearance().barTintColor = UIColor(red:0.16, green:0.17, blue:0.20, alpha:0.4)
+    }
+    
     func startMoviesRequest(pageIndex : Int){
         
         self.isDataLoading = true

@@ -13,6 +13,7 @@ let OffsetSpeed: CGFloat = 25.0
 
 class MovieTableViewCell: UITableViewCell {
     
+    @IBOutlet weak var starRating: CosmosView!
     @IBOutlet weak var moviewThumbnail: UIImageView!
     @IBOutlet weak var movieTitleLabel: UILabel!
     @IBOutlet weak var genreLabel: UILabel!
@@ -36,6 +37,7 @@ class MovieTableViewCell: UITableViewCell {
             return
         }
         
+        self.starRating.rating = Double(Float(self.movie.rating!*10)*5/Float(100))
         self.moviewThumbnail.downloadedFrom(url: movie.imagePath! as URL, contentMode: UIViewContentMode.scaleAspectFill)
         self.movieTitleLabel.text = movie.title
         self.genreLabel.text = movie.configureGenreString()

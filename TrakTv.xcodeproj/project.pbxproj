@@ -29,6 +29,7 @@
 		622CAE0D1F1BAF7D00E6C941 /* RoundedCornersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622CAE0C1F1BAF7D00E6C941 /* RoundedCornersView.swift */; };
 		622CAE111F1BD9E700E6C941 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622CAE101F1BD9E700E6C941 /* Reachability.swift */; };
 		622CAE131F1BDEFF00E6C941 /* customNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622CAE121F1BDEFF00E6C941 /* customNavigationViewController.swift */; };
+		622CAE151F1C130900E6C941 /* CosmosDistrib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622CAE141F1C130900E6C941 /* CosmosDistrib.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		622CAE0C1F1BAF7D00E6C941 /* RoundedCornersView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedCornersView.swift; sourceTree = "<group>"; };
 		622CAE101F1BD9E700E6C941 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		622CAE121F1BDEFF00E6C941 /* customNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = customNavigationViewController.swift; sourceTree = "<group>"; };
+		622CAE141F1C130900E6C941 /* CosmosDistrib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CosmosDistrib.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +162,7 @@
 		622CADFE1F1A81EF00E6C941 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				622CAE141F1C130900E6C941 /* CosmosDistrib.swift */,
 				622CAE101F1BD9E700E6C941 /* Reachability.swift */,
 				622CADF81F1A7CC600E6C941 /* madmax.jpg */,
 			);
@@ -288,6 +291,7 @@
 				622CAE0B1F1B95C600E6C941 /* ProfileViewController.swift in Sources */,
 				622CAE011F1AB2BF00E6C941 /* CrewMember.swift in Sources */,
 				6220F59F1F181A8E000DF209 /* MovieTableViewCell.swift in Sources */,
+				622CAE151F1C130900E6C941 /* CosmosDistrib.swift in Sources */,
 				6220F5671F17F9EB000DF209 /* AppDelegate.swift in Sources */,
 				622CAE0D1F1BAF7D00E6C941 /* RoundedCornersView.swift in Sources */,
 				622CAE071F1B732B00E6C941 /* TrailerTableViewCell.swift in Sources */,
@@ -516,6 +520,7 @@
 				622CADF21F18AC5500E6C941 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

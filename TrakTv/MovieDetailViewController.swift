@@ -12,6 +12,7 @@ class MovieDetailViewController: UIViewController {
 
     var movie : Movie! /// Selected movie
     
+    @IBOutlet weak var starRating: CosmosView!
     @IBOutlet weak var tagLineLabel: UILabel!
     @IBOutlet weak var movieDetailTableView: UITableView!
     @IBOutlet weak var backGroundImageView: UIImageView!
@@ -22,12 +23,15 @@ class MovieDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.starRating.rating = Double(Float(self.movie.rating!*10)*5/Float(100))
+        
         self.backGroundImageView.image = UIImage(data: self.movie.posterData!, scale: 1.5)
         self.posterImageView.image = UIImage(data: self.movie.posterData!)
         self.tagLineLabel.text = self.movie.tagline!
         
         self.movieDetailTableView.contentInset = UIEdgeInsetsMake(-65, 0, 0, 0)
         self.setupTableCellDetails()
+        self.setupNavigationBarAppearance()
 
     }
     
@@ -36,7 +40,6 @@ class MovieDetailViewController: UIViewController {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
-        self.navigationController?.navigationBar.backgroundColor = UIColor(red:0.16, green:0.17, blue:0.20, alpha:0.4)
     }
     
     // Ensure the image for the youtube thumbnail is downloaded, when complete, reload the table view
