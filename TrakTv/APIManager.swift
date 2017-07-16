@@ -28,6 +28,8 @@ class APIManager: NSObject {
     let tracktRequestURL : String = "https://api.trakt.tv/movies/"
     let movieDBRequestURL : String = "https://api.themoviedb.org/3/movie/"
     
+    var totalMovieCount : Int? // Total count of movies on db
+    
     override init() {
         
     }
@@ -102,12 +104,9 @@ class APIManager: NSObject {
         
         var requestURL : String = tracktRequestURL
         
-        
-        //trending?page=1&limit=10&extended=full
-        
         if requestType == .trendingMovies {
             
-            requestURL = requestURL.appending("trending?page=\(pageIndex!)&limit=10extended=full")
+            requestURL = requestURL.appending("trending?page=\(pageIndex!)&limit=10&extended=full")
             
         } else if requestType == .people {
             
@@ -134,6 +133,9 @@ class APIManager: NSObject {
                         completion(true, self.determinePeople(dataDictionary: jsonResult!))
                         
                     } else if requestType == .trendingMovies {
+                        
+                        let httpResponse = response as! HTTPURLResponse
+                        self.totalMovieCount = Int((httpResponse.allHeaderFields["x-pagination-item-count"] as? String)!)
                         
                         let jsonResult = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSArray
                         
@@ -249,10 +251,10 @@ class APIManager: NSObject {
         return trendingMovies
     }
     
-    func startTrendingRequests(completion : @escaping (_ requestComplete : Bool) -> Void){
+    func startTrendingRequests(pageIndex:Int, completion : @escaping (_ requestComplete : Bool) -> Void){
         
         // First request for all the Trending movies
-        self.performTrackTRequests(requestType: APIManager.tracktRequestype.trendingMovies, movie: nil) { (status, trendingMovies) in
+        self.performTrackTRequests(requestType: APIManager.tracktRequestype.trendingMovies, movie: nil, pageIndex: pageIndex) { (status, trendingMovies) in
             
             let movies = (trendingMovies as? [Movie])!
             

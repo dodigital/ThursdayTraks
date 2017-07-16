@@ -14,38 +14,47 @@ class TrendingMoviesTableViewController: UITableViewController {
     var animationShown : [Bool]?   /// Array helps identify which rows at index have been animated
     var backToTopButton : UIBarButtonItem!
     var selectedMovie : Movie!
+    var pageIndex : Int = 1
+    var isDataLoading : Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadTableView(sender:)), name: NSNotification.Name(rawValue: "UpdatedTrendingTableView"), object: nil)
-        
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(confirmConnectivity(sender:)), name: NSNotification.Name(rawValue: "reloadMovies"), object: nil)
-        
-        self.startMoviesRequest()
-        
         self.title = "TRENDING MOVIES"
         self.animationShown = []
         self.backToTopButton =  UIBarButtonItem(image: UIImage(named:"up-arrow"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(backToTopButtonWasPressed))
+        
         self.navigationItem.setRightBarButton(self.backToTopButton, animated: false)
         self.navigationItem.rightBarButtonItem?.tintColor = .white
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadTableView(sender:)), name: NSNotification.Name(rawValue: "UpdatedTrendingTableView"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(confirmConnectivity(sender:)), name: NSNotification.Name(rawValue: "reloadMovies"), object: nil)
+        
+        if self.movies.count == 0 {
+            self.startMoviesRequest(pageIndex: 1)
+        }
 
     }
     
-    func startMoviesRequest(){
+    func startMoviesRequest(pageIndex : Int){
         
+        self.isDataLoading = true
+
         if (Reachability.sharedInstance?.isReachable)! {
             
             DispatchQueue.global().async {
                 
-                APIManager.sharedInstance.startTrendingRequests { (complete) in
+                APIManager.sharedInstance.startTrendingRequests(pageIndex: pageIndex) { (complete) in
                     
                     let personRequestGroup = DispatchGroup()
                     
-                    for item in self.movies {
+                    for item in self.movies[(pageIndex-1) * 10...self.movies.count-1] {
+                        
                         personRequestGroup.enter()
-                        APIManager.sharedInstance.performTrackTRequests(requestType: APIManager.tracktRequestype.people, movie: item, completion: { (didComplete, people) in
+                        
+                        APIManager.sharedInstance.performTrackTRequests(requestType: APIManager.tracktRequestype.people, movie: item, pageIndex: 1, completion: { (didComplete, people) in
+                            
                             item.udpateCast(people: people as! [Person])
                             personRequestGroup.leave()
                         })
@@ -54,7 +63,8 @@ class TrendingMoviesTableViewController: UITableViewController {
                     personRequestGroup.notify(queue: DispatchQueue.global(), execute: {
                         
                         let memberImageGroup = DispatchGroup()
-                        for movie in self.movies {
+                        for movie in self.movies[(pageIndex-1) * 10...self.movies.count-1] {
+                            
                             for member in movie.people! {
                                 memberImageGroup.enter()
                                 
@@ -67,7 +77,7 @@ class TrendingMoviesTableViewController: UITableViewController {
                         }
                         
                         memberImageGroup.notify(queue: DispatchQueue.main, execute: {
-                            
+                          self.isDataLoading = false
                         })
                     })
                 }
@@ -81,7 +91,7 @@ class TrendingMoviesTableViewController: UITableViewController {
     func confirmConnectivity(sender : NSNotification){
         
         if self.movies.count == 0 {
-            startMoviesRequest()
+            startMoviesRequest(pageIndex: 0)
         }
         
     }
@@ -93,9 +103,11 @@ class TrendingMoviesTableViewController: UITableViewController {
     
     /// Reload the tableview safely in the main thread when movies have been received
     func reloadTableView(sender : NSNotification){
-        let movies = sender.userInfo!["movies"] as! [Movie]
-        self.movies = movies
-        self.animationShown = [Bool] (repeating: false, count: movies.count)
+        self.isDataLoading = false
+      
+        let returnedMovies = sender.userInfo!["movies"] as! [Movie]
+        self.movies.append(contentsOf: returnedMovies)
+        self.animationShown?.append(contentsOf: [Bool] (repeating: false, count: returnedMovies.count))
         self.tableView.reloadData()
     }
 
@@ -109,7 +121,6 @@ class TrendingMoviesTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         return self.movies.count
     }
     
@@ -141,7 +152,6 @@ class TrendingMoviesTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         self.selectedMovie = self.movies[indexPath.row]
-    
         self.performSegue(withIdentifier: "presentMovie", sender: self)
         
     }
@@ -158,7 +168,6 @@ class TrendingMoviesTableViewController: UITableViewController {
             parallaxCell.offset(CGPoint(x: 0.0, y: yOffset))
         }
         
-        
         // Alter the appearance of the backToTopButton based on offset on the scrollview
         let scrollOffset = scrollView.contentOffset.y
         if scrollOffset < 5 {
@@ -173,6 +182,21 @@ class TrendingMoviesTableViewController: UITableViewController {
                 backToTopButton.isEnabled = true
             }
         }
+    }
+    
+    override func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if ((tableView.contentOffset.y + tableView.frame.size.height) >= tableView.contentSize.height)
+        {
+            if !isDataLoading{
+                isDataLoading = true
+                pageIndex += 1
+                self.startMoviesRequest(pageIndex: self.pageIndex)
+            }
+        }
+    }
+    
+    override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        self.isDataLoading = false
     }
 
     // MARK: -  Navigation
